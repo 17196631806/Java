@@ -41,6 +41,18 @@ public class ManageStudent {
         }
     }
 
+    /**
+     * 添加学生信息界面
+     * @param response
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("addStudentJsp")
+    public String addStudent(HttpServletResponse response, HttpServletRequest request) throws Exception{
+        return "addStudent";
+    }
+
     @RequestMapping("queryStudent")
     public void  queryStudent(HttpServletRequest request,
                               HttpServletResponse response,
@@ -96,7 +108,7 @@ public class ManageStudent {
     }
 
     /**
-     * 修改界面
+     * 修改学生信息界面
      * @param student
      * @return
      * @throws Exception
@@ -129,29 +141,7 @@ public class ManageStudent {
         List<Student> studentList = studentServerimpl.findStudent(student.getId());
         Page p = new Page();
 //        //设置每页条数
-           p.setPageSize(0);
-//        //设置页数
-//        p.setPageIndex(pageIndex);
-//        //总页数
-//        p.setPageTotalPages(studentList.size());
-//        //设置当前页
-//        if (studentList.size()%pageSize == 0){
-//            p.setPagePages(studentList.size()/pageSize);
-//        }else {
-//            p.setPagePages(studentList.size()/pageSize+1);
-//        }
-//        //获得分页数据在list集合中的索引
-//        int firstIndex = (pageIndex-1)*pageSize;
-//        int toIndex = pageIndex*pageSize;
-//        if (toIndex>studentList.size()){
-//            toIndex=studentList.size();
-//        }
-//        if (firstIndex>toIndex){
-//            firstIndex=0;
-//            p.setPageIndex(1);
-//        }
-//        //截取数据集合，获得分页数据
-//        List<Student> courseList = studentList.subList(firstIndex, toIndex);
+        p.setPageSize(0);
         p.setEmpList(studentList);
         request.setAttribute("Page",p);
         System.out.println(studentList);

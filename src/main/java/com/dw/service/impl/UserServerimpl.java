@@ -29,4 +29,9 @@ public class UserServerimpl implements UserServer {
     public List<User> showAllUser() {
         return userDao.showAllUser();
     }
+
+    @Override
+    public void modifyPassword(Integer id) {
+        userDao.modifyPassword(id);
+    }
 }

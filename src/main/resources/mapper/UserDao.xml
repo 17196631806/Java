@@ -19,9 +19,11 @@
 
 
     <select id="UserChek" resultType="com.dw.model.User" parameterType="com.dw.model.User">
-        SELECT * FROM adminUser WHERE username= '22' AND password= '33';
+        SELECT * FROM adminUser WHERE username= #{username,jdbcType=VARCHAR} AND password= #{password,jdbcType=VARCHAR};
     </select>
 
-
+    <select id="modifyPassword" parameterType="java.lang.Integer">
+        UPDATE adminUser SET  password== #{password},  WHERE id = #{id,jdbcType=INTEGER};
+    </select>
 
 </mapper>

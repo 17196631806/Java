@@ -32,18 +32,39 @@ public class UserLogin {
         // 解决请求和响应乱码问题
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("utf-8");
-            String name = user.getUsername();
-            String password = user.getPassword();
-            User user1 = userServerimpl.UserChek(user);
-            System.out.println(user1);
-            if (user1!=null){
-                //转发，将数据传给界面进行展示
-                return "main";
-//                request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request,response);
-//                response.sendRedirect("/main.jsp");
-            }else {
+        User user1 = userServerimpl.UserChek(user);
+        System.out.println(user1);
+        if (user1!=null){
+            return "main";
+        }else {
                 return "index";
-            }
+        }
     }
 
+    /**
+     *修改用户密码界面
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("modifyPwdUI")
+    public String modifyPwdUI(HttpServletRequest request,HttpServletResponse response)throws  Exception {
+        return "modifyPwd";
+    }
+
+    /**
+     * 提交修改密码操作
+     * @param user
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("modfiyPwd")
+    public String modifyPwd(User user, HttpServletRequest request, HttpServletResponse response)throws  Exception{
+        String id = user.getPassword();
+        userServerimpl.modifyPassword(user.getId());
+        return "main";
+    }
 }
