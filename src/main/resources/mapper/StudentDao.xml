@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.dw.dao.StudentDao">
+
+    <select id="modifyStudent" resultType="com.dw.model.Student" parameterType="java.lang.Integer">
+    SELECT * FROM student WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="addStudent" parameterType="com.dw.model.Student">
+    insert into student(name,age,sex,dept,tel,address) values (#{name}, #{age},#{sex},#{dept},#{tel},#{address})
+    </insert>
+
+
+    <select id="queryStudent" resultType="com.dw.model.Student">
+       SELECT * FROM student;
+   </select>
+
+    <select id="updateStudent" parameterType="com.dw.model.Student">
+        UPDATE student SET name = #{name}, age = #{age}, sex = #{sex}, dept = #{dept}, tel = #{tel}, address = #{address} WHERE id = #{id}
+    </select>
+
+    <select id="deleteStudent" parameterType="java.lang.Integer">
+        DELETE FROM student WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findStudent"  resultType="com.dw.model.Student" parameterType="java.lang.Integer">
+        SELECT * FROM student WHERE name LIKE '%3%'
+    </select>
+
+
+</mapper>

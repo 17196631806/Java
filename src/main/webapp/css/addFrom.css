@@ -1,0 +1,83 @@
+.divStyle{
+    border-style: solid;
+    width: 550px;
+    height: 400px;
+    position: absolute;
+    right: 650px;
+    bottom: 200px;
+}
+input{
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    top: 40px;
+    left: 120px;
+
+}
+span{
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 45px;
+    left: 60px;
+}
+.addButton {
+    width: 90px;
+    height: 35px;
+    background-color: blue;
+    position: absolute;
+    top: 350px;
+    left: 120px;
+}
+.resetButton {
+    width: 90px;
+    height: 35px;
+    background-color: green;
+    position: absolute;
+    top: 350px;
+    left: 240px;
+}
+
+span.titleSexStyle {
+    top: 90px;
+}
+span.titleSexStyle1 {
+    top: 90px;
+    left: 120px;
+}
+span.titleSexStyle2 {
+    top: 90px;
+    left: 170px;
+}
+span.titleAgeStyle {
+    top: 140px;
+}
+span.titleTelStyle {
+    top: 190px;
+}
+span.titleDeptStyle {
+    top: 240px;
+}
+span.titleAddressStyle {
+    top: 290px;
+}
+input.sexManStyle {
+    top: 85px;
+    left: 140px;
+}
+input.sexWomanStyle {
+    top: 85px;
+    left: 190px;
+}
+input.ageStyle {
+    top: 135px;
+}
+input.telStyle {
+    top: 185px;
+}
+input.deptStyle {
+    top: 235px;
+}
+input.addressStyle {
+    top: 285px;
+}

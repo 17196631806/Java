@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.dw.dao.UserDao">
+
+    <!--<select id="selectUser" resultType="User" parameterType="long">-->
+    <!--SELECT * FROM user WHERE id = #{id}-->
+    <!--</select>-->
+
+    <!--<insert id="add" parameterType="com.chatRobot.model.User">-->
+    <!--insert into user(email,password,username,role,status,regTime,regIp) values (#{email}, #{password},#{username},#{role},#{status},#{regTime},#{regIp})-->
+    <!--</insert>-->
+
+
+   <select id="showAllUser" resultType="com.dw.model.User">
+       SELECT * FROM adminUser;
+   </select>
+
+
+    <select id="UserChek" resultType="com.dw.model.User" parameterType="com.dw.model.User">
+        SELECT * FROM adminUser WHERE username= '22' AND password= '33';
+    </select>
+
+
+
+</mapper>
