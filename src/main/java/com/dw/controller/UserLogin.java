@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @program: StudentManagerWeb
@@ -20,26 +21,49 @@ public class UserLogin {
 
     @Resource
     public UserServerimpl userServerimpl;
+    private String uri;
 
     /**
-     * 具有保持登录状态的登录功能
+     * 登录功能
      * @param user      登录用户的密码和账户
      * @param request
      * @param response
      */
     @RequestMapping("login")
-    public String login(User user, HttpServletRequest request, HttpServletResponse response)throws Exception{
-        // 解决请求和响应乱码问题
-        response.setContentType("text/html;charset=utf-8");
+    public void login(User user, HttpServletRequest request, HttpServletResponse response)throws Exception{
         response.setCharacterEncoding("utf-8");
-        User user1 = userServerimpl.UserChek(user);
-        System.out.println(user1);
-        if (user1!=null){
-            return "main";
-        }else {
-                return "index";
+        try {
+            User loginInfo = userServerimpl.UserChek(user);
+            if (loginInfo==null){
+                uri = "login.jsp";
+            }else {
+                request.getSession().setAttribute("loginInfo",loginInfo);
+                uri = "main.jsp";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            uri = "error.jsp";
         }
+
+        request.getRequestDispatcher("/WEB-INF/views/"+uri).forward(request,response);
     }
+
+    /**
+     * 退出功能
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping("exit")
+    public String exit(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        HttpSession session = request.getSession(false);
+        if (session != null){
+            session.removeAttribute("loginInfo");
+            session.invalidate();
+        }
+        return "login";
+    }
+
 
     /**
      *修改用户密码界面

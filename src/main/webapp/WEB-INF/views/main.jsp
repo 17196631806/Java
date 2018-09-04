@@ -28,7 +28,7 @@
         <li><a href="/addStudentJsp" target="right" class="icon-glass"> 添加学生信息</a></li>
         <li><a href="/queryStudent" target="right" class="icon-music"> 学生信息维护</a></li>
         <li><a href="/modifyPwdUI" target="right" class="icon-check"> 修改密码</a></li>
-        <li><a href="info.html" target="right" class="icon-user"> 退出系统</a></li>
+        <li><a href="/exit" target="right" class="icon-user"> 退出系统</a></li>
     </ul>
 </div>
 <div>
